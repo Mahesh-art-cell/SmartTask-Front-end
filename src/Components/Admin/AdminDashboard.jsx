@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getAllUsers } from "../../services/api";
+// import { getAllUsers } from "../../services/api";
+import { getAllUsers } from "../../Services/api";
 import { useAuthContext } from "../../Context/AuthContext";
 import "./AdminDashboard.css";
 

@@ -147,7 +147,8 @@
 
 
 import React, { useEffect, useState } from "react";
-import { getAllUsers, deactivateUser, activateUser, getUserTasks } from "../../services/api";
+// import { getAllUsers, deactivateUser, activateUser, getUserTasks } from "../../services/api";
+import { getAllUsers,deactivateUser,activateUser,getUserTasks } from "../../Services/api";
 import "./UserManagement.css";
 
 const UserManagement = () => {
