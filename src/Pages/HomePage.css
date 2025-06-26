@@ -1,0 +1,26 @@
+.home-page {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.home-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.home-page p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.home-page a {
+  text-decoration: none;
+  color: #007bff;
+  margin: 0 0.5rem;
+}
+
+.home-page a:hover {
+  text-decoration: underline;
+}

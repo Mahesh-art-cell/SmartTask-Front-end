@@ -1,6 +1,13 @@
+import React from "react";
+import "./AuditLogs.css"
 
-import React from 'react';
-
-const AuditLogs = () => <div>Audit Logs</div>;
+const AuditLogs = () => {
+  return (
+    <div className="audit-logs">
+      <h3>Audit Logs</h3>
+      <p>Coming soon... (requires API implementation for logs)</p>
+    </div>
+  );
+};
 
 export default AuditLogs;

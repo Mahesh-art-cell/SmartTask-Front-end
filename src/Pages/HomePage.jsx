@@ -1,12 +1,14 @@
-
-import React from 'react';
-import Header from '../components/common/Header';
-
-const HomePage = () => (
-  <div>
-    <Header />
-    <h2>Welcome to the Task Tracker Home Page</h2>
-  </div>
-);
+import React from "react";
+import { Link } from "react-router-dom";
+import "./HomePage.css"
+const HomePage = () => {
+  return (
+    <div className="home-page">
+      <h1>Welcome to Smart Task Manager</h1>
+      <p>Organize your work and personal tasks easily.</p>
+      <Link to="/login">Login</Link> | <Link to="/register">Register</Link>
+    </div>
+  );
+};
 
 export default HomePage;

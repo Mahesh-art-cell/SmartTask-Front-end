@@ -1,29 +1,49 @@
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { loginUser, registerUser } from "../Services/AuthService";
+import { useNavigate } from "react-router-dom";
 
-import { createContext, useState, useEffect } from 'react';
-import authService from '../services/authService';
-
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const localUser = localStorage.getItem("user");
+    return localUser ? JSON.parse(localUser) : null;
+  });
 
+  const navigate = useNavigate();
+
+  // ✅ Login: Save token, user, and navigate based on role
   const login = async (credentials) => {
-    const data = await authService.login(credentials);
-    if (data?.token) {
-      setUser(data.user);
-    }
+    const data = await loginUser(credentials);
+    localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("token", data.token);
+    setUser(data.user);
+    navigate(data.user.role === "admin" ? "/admin" : "/dashboard");
   };
 
-  const register = async (info) => {
-    const data = await authService.register(info);
-    if (data?.token) {
-      setUser(data.user);
-    }
+  // ✅ Register: Allow selecting role during registration
+  const register = async (credentials) => {
+    const data = await registerUser(credentials);
+    localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("token", data.token);
+    setUser(data.user);
+    navigate(data.user.role === "admin" ? "/admin" : "/dashboard");
+  };
+
+  // ✅ Logout: Clear storage, reset user, redirect
+  const logout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setUser(null);
+    navigate("/login");
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register }}>
+    <AuthContext.Provider value={{ user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
+
+// ✅ Custom Hook
+export const useAuthContext = () => useContext(AuthContext);

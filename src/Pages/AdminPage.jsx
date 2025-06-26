@@ -1,15 +1,24 @@
+import React from "react";
+import AdminDashboard from "../Components/Admin/AdminDashboard";
+import UserManagement from "../Components/Admin/UserManagement";
+// import AdminReports from "../Components/Admin/AdminReports"; // Optional
+import "./AdminPage.css";
 
-import React from 'react';
-import AdminDashboard from '../components/admin/AdminDashboard';
-import Header from '../components/common/Header';
-import Sidebar from '../components/common/Sidebar';
+const AdminPage = () => {
+  return (
+    <div className="admin-page">
+      <h1 className="admin-heading">Admin Panel</h1>
 
-const AdminPage = () => (
-  <div>
-    <Header />
-    <Sidebar />
-    <AdminDashboard />
-  </div>
-);
+      {/* Overview cards */}
+      <AdminDashboard />
+
+      {/* Manage users */}
+      <UserManagement />
+
+      {/* Optional: Reports */}
+      {/* <AdminReports /> */}
+    </div>
+  );
+};
 
 export default AdminPage;

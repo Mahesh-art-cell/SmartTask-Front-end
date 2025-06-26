@@ -1,19 +1,20 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import DashboardPage from './pages/DashboardPage';
-import TasksPage from './pages/TasksPage';
-import AdminPage from './pages/AdminPage';
-import { AuthProvider } from './context/AuthContext';
-import { TaskProvider } from './context/TaskContext';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
+import DashboardPage from "./Pages/DashboardPage";
+import TasksPage from "./Pages/TasksPage";
+import AdminPage from "./Pages/AdminPage";
+import HomePage from "./Pages/HomePage";
+import { AuthProvider } from "./Context/AuthContext";
+import { TaskProvider } from "./context/TaskContext";
+import "./App.css";
 
-const App = () => {
+function App() {
   return (
-    <AuthProvider>
-      <TaskProvider>
-        <Router>
+    <Router>
+      <AuthProvider>
+        <TaskProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
@@ -22,10 +23,10 @@ const App = () => {
             <Route path="/tasks" element={<TasksPage />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
-        </Router>
-      </TaskProvider>
-    </AuthProvider>
+        </TaskProvider>
+      </AuthProvider>
+    </Router>
   );
-};
+}
 
 export default App;

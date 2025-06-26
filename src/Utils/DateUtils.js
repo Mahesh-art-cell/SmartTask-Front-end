@@ -1,15 +1,17 @@
-
-export const formatDate = (dateStr) => {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString();
+export const formatDate = (date) => {
+  return new Date(date).toLocaleDateString("en-IN", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 };
 
-export const isToday = (dateStr) => {
+export const isToday = (date) => {
   const today = new Date();
-  const date = new Date(dateStr);
+  const check = new Date(date);
   return (
-    today.getDate() === date.getDate() &&
-    today.getMonth() === date.getMonth() &&
-    today.getFullYear() === date.getFullYear()
+    check.getDate() === today.getDate() &&
+    check.getMonth() === today.getMonth() &&
+    check.getFullYear() === today.getFullYear()
   );
 };

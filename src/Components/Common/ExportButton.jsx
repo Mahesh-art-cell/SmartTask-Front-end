@@ -1,8 +1,16 @@
+import React from "react";
+import { exportTasks } from "../../Services/ExportService";
+import "./ExportButton.css"
+const ExportButton = ({ type = "csv" }) => {
+  const handleExport = async () => {
+    await exportTasks(type);
+  };
 
-import React from 'react';
-
-const ExportButton = ({ onExport }) => (
-  <button onClick={onExport}>Export Tasks</button>
-);
+  return (
+    <button onClick={handleExport}>
+      Export {type.toUpperCase()}
+    </button>
+  );
+};
 
 export default ExportButton;

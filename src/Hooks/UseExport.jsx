@@ -1,22 +1,32 @@
+import axios from "axios";
 
-import { useState } from 'react';
-import exportService from '../services/exportService';
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 
 const useExport = () => {
-  const [isExporting, setIsExporting] = useState(false);
+  const getToken = () => localStorage.getItem("token");
 
-  const exportTasks = async (tasks) => {
+  const downloadFile = async (type) => {
     try {
-      setIsExporting(true);
-      await exportService.exportToCSV(tasks);
-    } catch (error) {
-      console.error('Export failed:', error);
-    } finally {
-      setIsExporting(false);
+      const res = await axios.get(`${API_URL}/export/${type}`, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        },
+        responseType: "blob",
+      });
+
+      const blob = new Blob([res.data]);
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `tasks.${type}`);
+      document.body.appendChild(link);
+      link.click();
+    } catch (err) {
+      console.error("Download error:", err);
     }
   };
 
-  return { isExporting, exportTasks };
+  return { downloadFile };
 };
 
 export default useExport;

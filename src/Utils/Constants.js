@@ -1,3 +1,8 @@
+export const TASK_STATUSES = ["pending", "completed"];
 
-export const TASK_STATUSES = ['Pending', 'In Progress', 'Completed'];
-export const PRIORITY_LEVELS = ['Low', 'Medium', 'High'];
+export const ROLES = {
+  USER: "user",
+  ADMIN: "admin",
+};
+
+export const CATEGORY_LIST = ["Work", "Personal", "Health"];

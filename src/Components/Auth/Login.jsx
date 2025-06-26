@@ -1,21 +1,59 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../Context/AuthContext";
+import "./Login.css";
 
-import React, { useState } from 'react';
+const Login = () => {
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { login } = useAuthContext(); // ✅ from AuthContext
 
-const Login = ({ onLogin }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onLogin({ email, password });
+    setError("");
+
+    try {
+      await login(form); // ✅ AuthContext handles user/token/navigation
+    } catch (err) {
+      setError(err.response?.data?.message || "Invalid credentials");
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
-      <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
-      <button type="submit">Login</button>
-    </form>
+    <div className="auth-container">
+      <h2>Welcome Back!</h2>
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          value={form.password}
+          onChange={handleChange}
+          required
+        />
+        {error && <p className="error-text">{error}</p>}
+        <button type="submit">Login</button>
+      </form>
+      <p>
+        Don’t have an account?{" "}
+        <span className="link" onClick={() => navigate("/register")}>
+          Register Here
+        </span>
+      </p>
+    </div>
   );
 };
 

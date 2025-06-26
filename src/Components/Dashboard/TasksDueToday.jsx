@@ -1,6 +1,29 @@
+// import React, { useEffect, useState } from "react";
+// import { getTasksDueToday } from "../../services/taskService";
 
-import React from 'react';
+// import "./TaskDueToday.css";
 
-const TasksDueToday = () => <div>Tasks due today</div>;
+// const TasksDueToday = () => {
+//   const [tasks, setTasks] = useState([]);
 
-export default TasksDueToday;
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const data = await getTasksDueToday();
+//       setTasks(data);
+//     };
+//     fetchData();
+//   }, []);
+
+//   return (
+//     <div className="card">
+//       <h3>Tasks Due Today</h3>
+//       <ul>
+//         {tasks.map((task) => (
+//           <li key={task._id}>{task.title}</li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// };
+
+// export default TasksDueToday;

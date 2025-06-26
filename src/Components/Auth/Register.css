@@ -1,0 +1,136 @@
+.auth-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.auth-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.auth-form .error-text {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.auth-form button {
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.auth-form button:hover {
+  background-color: #0056b3;
+}
+
+.auth-container p {
+  margin-top: 16px;
+  font-size: 0.95rem;
+}
+
+.auth-container .link {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.auth-container .link:hover {
+  text-decoration: underline;
+}
+
+
+
+
+.auth-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  background: #f9f9f9;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-form label {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.auth-form input,
+.auth-form select {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 0.4rem;
+}
+
+.submit-btn {
+  margin-top: 1.5rem;
+  background-color: #007bff;
+  color: white;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.error-text {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+.switch-auth {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.link {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}

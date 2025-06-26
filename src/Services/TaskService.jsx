@@ -1,24 +1,38 @@
+import api from "./api";
 
-import api from './api';
-
-const getTasks = async () => {
-  const response = await api.get('/tasks');
-  return response.data;
+// Get all tasks
+export const getAllTasks = async () => {
+  const res = await api.get("/tasks");
+  return res.data;
 };
 
-const createTask = async (task) => {
-  const response = await api.post('/tasks', task);
-  return response.data;
+// Create a new task
+export const createTask = async (task) => {
+  const res = await api.post("/tasks", task);
+  return res.data;
 };
 
-const updateTask = async (id, updates) => {
-  const response = await api.put(`/tasks/${id}`, updates);
-  return response.data;
+// Update a task by ID
+export const updateTask = async (id, updates) => {
+  const res = await api.put(`/tasks/${id}`, updates);
+  return res.data;
 };
 
-const deleteTask = async (id) => {
-  const response = await api.delete(`/tasks/${id}`);
-  return response.data;
+// Delete a task by ID
+export const deleteTask = async (id) => {
+  const res = await api.delete(`/tasks/${id}`);
+  return res.data;
 };
 
-export default { getTasks, createTask, updateTask, deleteTask };
+// Mark a task as completed
+export const markTaskDone = async (id) => {
+  const res = await api.patch(`/tasks/${id}/complete`);
+  return res.data;
+};
+
+// Task statistics (completed vs pending, etc.)
+export const getTaskStats = async () => {
+  const res = await api.get("/tasks/stats");
+  return res.data;
+};
+
