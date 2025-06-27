@@ -1,4 +1,4 @@
-.home-page {
+/* .home-page {
   text-align: center;
   padding: 4rem 2rem;
   background-color: #f9f9f9;
@@ -23,4 +23,281 @@
 
 .home-page a:hover {
   text-decoration: underline;
+} */
+
+
+
+
+/* HomePage.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Animated background elements */
+.home-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+  z-index: 1;
+  animation: backgroundShift 10s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg); 
+    opacity: 0.7;
+  }
+  50% { 
+    transform: scale(1.1) rotate(2deg); 
+    opacity: 1;
+  }
+}
+
+/* Floating shapes */
+.home-page::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  top: 10%;
+  right: 10%;
+  animation: float 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-30px) rotate(180deg); 
+  }
+}
+
+/* Main content styling */
+.home-page > * {
+  position: relative;
+  z-index: 2;
+}
+
+.home-page h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #fff, #f8f9ff, #e8eaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideInUp 1s ease-out;
+  line-height: 1.2;
+}
+
+.home-page p {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 600px;
+  animation: slideInUp 1s ease-out 0.2s both;
+}
+
+/* Navigation links container */
+.home-page a {
+  display: inline-block;
+  padding: 18px 40px;
+  margin: 0 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  animation: slideInUp 1s ease-out 0.4s both;
+}
+
+/* Login button styling */
+.home-page a[href="/login"] {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+}
+
+/* Register button styling */
+.home-page a[href="/register"] {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+}
+
+/* Hover effects for links */
+.home-page a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Shimmer effect on hover */
+.home-page a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.home-page a:hover::before {
+  left: 100%;
+}
+
+/* Active/focus states */
+.home-page a:active {
+  transform: translateY(-2px);
+}
+
+.home-page a:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Separator styling */
+.home-page a + * {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0 20px;
+  animation: slideInUp 1s ease-out 0.4s both;
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-page {
+    padding: 40px 20px;
+  }
+  
+  .home-page h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .home-page p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .home-page a {
+    display: block;
+    margin: 10px auto;
+    width: 250px;
+    text-align: center;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+  }
+  
+  /* Hide separator on mobile */
+  .home-page a + * {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page h1 {
+    font-size: 2.2rem;
+  }
+  
+  .home-page p {
+    font-size: 1rem;
+  }
+  
+  .home-page a {
+    width: 200px;
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
+/* Add a subtle pulse animation to the entire container */
+.home-page {
+  animation: containerPulse 4s ease-in-out infinite;
+}
+
+@keyframes containerPulse {
+  0%, 100% { 
+    filter: brightness(1); 
+  }
+  50% { 
+    filter: brightness(1.05); 
+  }
+}
+
+/* Additional floating elements for more dynamic feel */
+.home-page {
+  position: relative;
+}
+
+.home-page:before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  top: 15%;
+  left: 15%;
+  animation: float 8s ease-in-out infinite reverse;
+  z-index: 1;
+}
+
+/* Ensure text remains readable */
+.home-page h1,
+.home-page p,
+.home-page a {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

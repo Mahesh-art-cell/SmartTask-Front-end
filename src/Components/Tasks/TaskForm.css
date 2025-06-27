@@ -1,4 +1,4 @@
-.task-form {
+/* .task-form {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -36,4 +36,384 @@
 
 .task-form button:hover {
   background-color: #1d4ed8;
+} */
+
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Task Form Container */
+.task-form {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Subtle background pattern */
+.task-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(99,102,241,0.05)"/></pattern></defs><rect width="60" height="60" fill="url(%23dots)"/></svg>');
+  pointer-events: none;
+}
+
+.task-form:hover {
+  border-color: #c7d2fe;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.1),
+    0 8px 15px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+/* Form Elements Base Styles */
+.task-form input,
+.task-form textarea {
+  width: 100%;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: 14px;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* Input Placeholder Styles */
+.task-form input::placeholder,
+.task-form textarea::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+/* Focus States */
+.task-form input:focus,
+.task-form textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 
+    0 0 0 4px rgba(99, 102, 241, 0.1),
+    0 8px 25px rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);
+  background: #ffffff;
+}
+
+.task-form input:focus::placeholder,
+.task-form textarea:focus::placeholder {
+  color: #d1d5db;
+}
+
+/* Hover States */
+.task-form input:hover:not(:focus),
+.task-form textarea:hover:not(:focus) {
+  border-color: #d1d5db;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Title Input Specific */
+.task-form input[name="title"] {
+  font-size: 18px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+}
+
+.task-form input[name="title"]:focus {
+  background: #ffffff;
+}
+
+/* Description Textarea */
+.task-form textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.task-form textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.task-form textarea::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.task-form textarea::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.task-form textarea::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Date Input */
+.task-form input[type="date"] {
+  position: relative;
+  cursor: pointer;
+  color: #374151;
+  font-weight: 500;
+}
+
+.task-form input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.task-form input[type="date"]:hover::-webkit-calendar-picker-indicator {
+  opacity: 1;
+}
+
+/* Submit Button */
+.task-form button[type="submit"] {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+  text-transform: none;
+  letter-spacing: 0.25px;
+  z-index: 1;
+}
+
+/* Button Background Effect */
+.task-form button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.task-form button[type="submit"]:hover::before {
+  left: 100%;
+}
+
+/* Button States */
+.task-form button[type="submit"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 12px 30px rgba(99, 102, 241, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #5855e8 0%, #7c3aed 100%);
+}
+
+.task-form button[type="submit"]:active {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 8px 20px rgba(99, 102, 241, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Edit Mode Styling */
+.task-form.editing {
+  border-color: #f59e0b;
+  background: linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%);
+  box-shadow: 
+    0 10px 25px rgba(245, 158, 11, 0.15),
+    0 4px 10px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.task-form.editing button[type="submit"] {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.task-form.editing button[type="submit"]:hover {
+  background: linear-gradient(135deg, #e08e0b 0%, #c2680a 100%);
+  box-shadow: 
+    0 12px 30px rgba(245, 158, 11, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Success/Valid State */
+.task-form input:valid:not(:placeholder-shown),
+.task-form textarea:valid:not(:placeholder-shown) {
+  border-color: #10b981;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%2310b981" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 50px;
+}
+
+/* Loading State */
+.task-form button[type="submit"].loading {
+  pointer-events: none;
+  opacity: 0.8;
+  color: transparent;
+}
+
+.task-form button[type="submit"].loading::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  margin: auto;
+  border: 2px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Form Animation */
+.task-form {
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .task-form {
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .task-form input,
+  .task-form textarea {
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    font-size: 15px;
+  }
+  
+  .task-form input[name="title"] {
+    font-size: 16px;
+  }
+  
+  .task-form textarea {
+    min-height: 100px;
+  }
+  
+  .task-form button[type="submit"] {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-form {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+  }
+  
+  .task-form input,
+  .task-form textarea,
+  .task-form button[type="submit"] {
+    border-radius: 12px;
+  }
+  
+  .task-form input,
+  .task-form textarea {
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  }
+  
+  .task-form textarea {
+    min-height: 80px;
+  }
+}
+
+/* Accessibility Improvements */
+.task-form input:focus-visible,
+.task-form textarea:focus-visible,
+.task-form button:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .task-form {
+    background: #ffffff;
+    border: 3px solid #000000;
+  }
+  
+  .task-form input,
+  .task-form textarea {
+    border-color: #000000;
+    background: #ffffff;
+  }
+  
+  .task-form button[type="submit"] {
+    background: #000000;
+    color: #ffffff;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .task-form,
+  .task-form input,
+  .task-form textarea,
+  .task-form button[type="submit"] {
+    transition: none;
+    animation: none;
+  }
+  
+  .task-form:hover {
+    transform: none;
+  }
+  
+  .task-form input:focus,
+  .task-form textarea:focus,
+  .task-form button[type="submit"]:hover {
+    transform: none;
+  }
 }

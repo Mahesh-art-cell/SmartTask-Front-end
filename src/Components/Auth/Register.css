@@ -1,136 +1,409 @@
-.auth-container {
-  max-width: 400px;
-  margin: 80px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-  text-align: center;
+
+/* Register.css - Modern Task Management System Styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.auth-container h2 {
-  margin-bottom: 24px;
-  font-size: 1.8rem;
-  color: #333;
-}
-
-.auth-form {
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
 }
 
-.auth-form input {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
+.register-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    0 8px 25px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.auth-form input:focus {
-  border-color: #007bff;
-  outline: none;
+.register-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease infinite;
 }
 
-.auth-form .error-text {
-  color: #e74c3c;
-  font-size: 0.9rem;
-  margin-top: -10px;
-  margin-bottom: 10px;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.auth-form button {
-  padding: 12px;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-.auth-form button:hover {
-  background-color: #0056b3;
+.register-form {
+  width: 100%;
 }
 
-.auth-container p {
-  margin-top: 16px;
-  font-size: 0.95rem;
+.register-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #1a202c;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
 }
 
-.auth-container .link {
-  color: #007bff;
-  cursor: pointer;
+.register-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  margin: 0.75rem auto 0;
+  border-radius: 2px;
+}
+
+.form-group {
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #374151;
   font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
 }
 
-.auth-container .link:hover {
-  text-decoration: underline;
-}
-
-
-
-
-.auth-container {
-  max-width: 400px;
-  margin: 3rem auto;
-  background: #f9f9f9;
-  padding: 2rem;
+.form-input, .form-select {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e5e7eb;
   border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  position: relative;
 }
 
-.auth-form {
-  display: flex;
-  flex-direction: column;
+.form-input:focus, .form-select:focus {
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 
+    0 0 0 4px rgba(102, 126, 234, 0.1),
+    0 4px 12px rgba(102, 126, 234, 0.15);
+  transform: translateY(-1px);
 }
 
-.auth-form h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
+.form-input:focus + .form-label, .form-select:focus + .form-label {
+  color: #667eea;
 }
 
-.auth-form label {
-  margin-top: 1rem;
+.form-input::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1rem;
+  padding-right: 3rem;
+  appearance: none;
+}
+
+.form-select option {
+  padding: 0.5rem;
+  background: white;
+  color: #374151;
+}
+
+.form-select option[value="admin"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #667eea;
   font-weight: 600;
 }
 
-.auth-form input,
-.auth-form select {
-  padding: 0.7rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-top: 0.4rem;
+.error-message {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #dc2626;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #fca5a5;
+  display: flex;
+  align-items: center;
+  animation: errorShake 0.5s ease-in-out;
 }
 
-.submit-btn {
-  margin-top: 1.5rem;
-  background-color: #007bff;
+.error-message::before {
+  content: '⚠️';
+  margin-right: 0.75rem;
+  font-size: 1rem;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.register-button {
+  width: 100%;
+  padding: 1.125rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 0.7rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2rem;
 }
 
-.submit-btn:hover {
-  background-color: #0056b3;
+.register-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(102, 126, 234, 0.4),
+    0 4px 12px rgba(102, 126, 234, 0.2);
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
 }
 
-.error-text {
-  color: red;
-  margin-top: 0.5rem;
+.register-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 4px 12px rgba(102, 126, 234, 0.3),
+    0 2px 6px rgba(102, 126, 234, 0.1);
 }
 
-.switch-auth {
-  margin-top: 1rem;
+.register-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.register-button:hover::before {
+  left: 100%;
+}
+
+.login-link {
   text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-top: 1.5rem;
 }
 
-.link {
-  color: #007bff;
+.login-link button {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  font-size: inherit;
+  margin-left: 0.25rem;
+}
+
+.login-link button:hover {
+  color: #5a67d8;
+  text-decoration-thickness: 2px;
+}
+
+/* Task Management System Specific Styling */
+.role-indicator {
+  position: relative;
+}
+
+.form-select[name="role"] option[value="admin"] {
+  background-color: #f3f4f6;
+  font-weight: 600;
+}
+
+.form-select[name="role"]:focus {
+  border-color: #667eea;
+}
+
+/* Admin role special styling */
+.form-group:has(.form-select[name="role"]) .form-label::after {
+  content: " 👑";
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-select[name="role"]:focus + .form-label::after,
+.form-select[name="role"][value="admin"] + .form-label::after {
+  opacity: 1;
+}
+
+/* Loading state for button */
+.register-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.register-button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .register-container {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+  
+  .register-title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-input, .form-select {
+    padding: 0.875rem 1rem;
+  }
+  
+  .register-button {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem;
+  }
+  
+  .register-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .register-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  }
+  
+  .register-container {
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .register-title {
+    color: #f8fafc;
+  }
+  
+  .form-label {
+    color: #cbd5e1;
+  }
+  
+  .form-input, .form-select {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: #475569;
+    color: #f8fafc;
+  }
+  
+  .form-input:focus, .form-select:focus {
+    background: rgba(15, 23, 42, 0.8);
+  }
+  
+  .form-input::placeholder {
+    color: #64748b;
+  }
+  
+  .login-link {
+    color: #94a3b8;
+  }
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for better accessibility */
+.form-input:focus-visible, 
+.form-select:focus-visible, 
+.register-button:focus-visible,
+.login-link button:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Success state animation */
+@keyframes successPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.register-container.success {
+  animation: successPulse 0.6s ease-in-out;
+  border-color: #10b981;
+}
+
+.register-container.success::before {
+  background: linear-gradient(90deg, #10b981, #059669);
 }

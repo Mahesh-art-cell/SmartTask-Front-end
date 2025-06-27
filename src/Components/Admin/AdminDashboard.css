@@ -1,4 +1,4 @@
-.admin-dashboard {
+/* .admin-dashboard {
   padding: 2rem;
   background-color: #f7f9fc;
   border-radius: 10px;
@@ -48,4 +48,326 @@
 }
 .stat-card.inactive {
   border-top: 5px solid #e76f51;
+} */
+
+
+
+/* AdminDashboard.css */
+
+.admin-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+/* Animated background pattern */
+.admin-dashboard::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, rgba(102, 126, 234, 0.3) 0%, transparent 40%),
+    linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+  animation: adminBgFloat 20s ease-in-out infinite;
+}
+
+@keyframes adminBgFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(1deg); }
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 28px 36px;
+  margin-bottom: 36px;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.admin-header:hover::before {
+  left: 100%;
+}
+
+.admin-header h2 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #667eea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+}
+
+.logout-btn {
+  background: linear-gradient(135deg, #ff4757, #ff3742);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.3s ease;
+}
+
+.logout-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5);
+  background: linear-gradient(135deg, #ff3742, #ff2d3a);
+}
+
+.logout-btn:hover::before {
+  left: 100%;
+}
+
+.logout-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-card h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-card p {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Individual card colors */
+.stat-card.total {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(255, 255, 255, 0.95));
+}
+
+.stat-card.total::before {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.stat-card.total p {
+  color: #667eea;
+}
+
+.stat-card.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(255, 255, 255, 0.95));
+}
+
+.stat-card.active::before {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.stat-card.active p {
+  color: #10b981;
+}
+
+.stat-card.inactive {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(255, 255, 255, 0.95));
+}
+
+.stat-card.inactive::before {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.stat-card.inactive p {
+  color: #ef4444;
+}
+
+/* Loading state */
+.admin-dashboard > p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 16px;
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  
+  .admin-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .logout-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .stat-card {
+    padding: 24px 20px;
+  }
+  
+  .stat-card p {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard {
+    padding: 12px;
+  }
+  
+  .admin-header {
+    padding: 20px 16px;
+    margin-bottom: 24px;
+  }
+  
+  .admin-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .logout-btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+  
+  .stat-card {
+    padding: 20px 16px;
+  }
+  
+  .stat-card h3 {
+    font-size: 1rem;
+  }
+  
+  .stat-card p {
+    font-size: 2rem;
+  }
+}
+
+/* Focus states for accessibility */
+.logout-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.5);
+}
+
+.stat-card:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+/* Smooth transitions for all elements */
+* {
+  box-sizing: border-box;
+}
+
+.admin-dashboard * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
