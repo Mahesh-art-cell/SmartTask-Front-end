@@ -138,7 +138,6 @@ const UserManagement = ({ refreshStats }) => {
                   {selectedUserTasks.map((task) => (
                     <div key={task._id} className={`task-card ${task.status}`}>
                       <h5>{task.title}</h5>
-                      {/* <p>Due: {new Date(task.dueDate).toLocaleDateString()}</p> */}
                       <p>
                         Status: <strong>{task.status}</strong>
                       </p>

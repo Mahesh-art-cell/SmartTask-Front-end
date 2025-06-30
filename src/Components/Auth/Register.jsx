@@ -39,7 +39,6 @@ const Register = () => {
 
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
-      {/* <h2>Create Account</h2> */}
 
       <input
         id="fullName"

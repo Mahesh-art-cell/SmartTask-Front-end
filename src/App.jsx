@@ -7,7 +7,6 @@ import TasksPage from "./Pages/TasksPage";
 import AdminPage from "./Pages/AdminPage";
 import HomePage from "./Pages/HomePage";
 import { AuthProvider } from "./Context/AuthContext";
-// import { TaskProvider } from "./context/TaskContext";
 import { TaskProvider } from "./Context/TaskContext";
 import "./App.css";
 

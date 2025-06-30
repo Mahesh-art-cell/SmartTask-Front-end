@@ -8,7 +8,6 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
-// api.js
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
@@ -18,7 +17,7 @@ api.interceptors.request.use((config) => {
 });
 
 
-// ✅ Named exports
+
 export const getDashboardStats = async () => {
   const response = await api.get("/admin/stats");
   return response.data;

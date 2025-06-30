@@ -12,7 +12,6 @@ export const AuthProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  // ✅ Login: Save token, user, and navigate based on role
   const login = async (credentials) => {
     const data = await loginUser(credentials);
     localStorage.setItem("user", JSON.stringify(data.user));
@@ -21,7 +20,6 @@ export const AuthProvider = ({ children }) => {
     navigate(data.user.role === "admin" ? "/admin" : "/dashboard");
   };
 
-  // ✅ Register: Allow selecting role during registration
   const register = async (credentials) => {
     const data = await registerUser(credentials);
     localStorage.setItem("user", JSON.stringify(data.user));
@@ -30,7 +28,7 @@ export const AuthProvider = ({ children }) => {
     navigate(data.user.role === "admin" ? "/admin" : "/dashboard");
   };
 
-  // ✅ Logout: Clear storage, reset user, redirect
+
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
@@ -45,5 +43,5 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// ✅ Custom Hook
+
 export const useAuthContext = () => useContext(AuthContext);
