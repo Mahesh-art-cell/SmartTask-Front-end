@@ -7,7 +7,7 @@ const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { login } = useAuthContext(); // ✅ from AuthContext
+  const { login } = useAuthContext(); 
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -18,7 +18,7 @@ const Login = () => {
     setError("");
 
     try {
-      await login(form); // ✅ AuthContext handles user/token/navigation
+      await login(form); 
     } catch (err) {
       setError(err.response?.data?.message || "Invalid credentials");
     }

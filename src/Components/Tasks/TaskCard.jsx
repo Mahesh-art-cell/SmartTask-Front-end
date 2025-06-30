@@ -11,14 +11,14 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete }) => {
       <div className="task-actions">
         {task.status !== "completed" && (
           <button className="complete-btn" onClick={onComplete}>
-            ✅ Mark Complete
+            Mark Complete
           </button>
         )}
         <button className="edit-btn" onClick={() => onEdit(task)}>
-          ✏️ Edit
+          Edit
         </button>
         <button className="delete-btn" onClick={onDelete}>
-          ❌ Delete
+          Delete
         </button>
       </div>
     </div>

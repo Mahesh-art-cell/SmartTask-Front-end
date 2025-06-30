@@ -1,6 +1,5 @@
 import React from "react";
 import TaskList from "../Components/Tasks/TaskList";
-// import "./TasksPage.css"
 import "./TaskPage.css"
 const TasksPage = () => {
   return (

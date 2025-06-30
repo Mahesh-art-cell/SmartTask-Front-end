@@ -1,4 +1,4 @@
-// Dashboard.jsx
+//   user dashboard
 import React, { useState } from "react";
 import { useAuthContext } from "../../Context/AuthContext";
 import TaskForm from "../Tasks/TaskForm";
@@ -10,10 +10,10 @@ const Dashboard = () => {
   const { user, logout } = useAuthContext();
   const { removeTask, completeTask } = useTaskContext();
 
-  const [editingTask, setEditingTask] = useState(null); // For editing state
+  const [editingTask, setEditingTask] = useState(null); 
 
   const handleEdit = (task) => {
-    setEditingTask(task); // Pass to form
+    setEditingTask(task); 
   };
 
   return (
@@ -23,10 +23,10 @@ const Dashboard = () => {
         <button className="logout-btn" onClick={logout}>Logout</button>
       </div>
 
-      {/* Form receives editingTask and setEditingTask */}
+      
       <TaskForm editingTask={editingTask} setEditingTask={setEditingTask} />
 
-      {/* Pass control functions to list */}
+     
       <TaskList
         onEdit={handleEdit}
         onDelete={removeTask}

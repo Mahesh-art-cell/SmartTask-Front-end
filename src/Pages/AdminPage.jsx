@@ -13,7 +13,7 @@ const AdminPage = () => {
       <AdminDashboard />
 
       {/* Manage users */}
-      <UserManagement />
+      {/* <UserManagement /> */}
 
       {/* Optional: Reports */}
       {/* <AdminReports /> */}

@@ -42,6 +42,10 @@ export const getUserTasks = async (userId) => {
   return res.data;
 };
 
+export const getTasksByUserId = async (userId) => {
+  const res = await api.get(`/tasks/user/${userId}`);
+  return res.data;
+};
 
 
 export default api; 

@@ -5,4 +5,3 @@ export const ROLES = {
   ADMIN: "admin",
 };
 
-export const CATEGORY_LIST = ["Work", "Personal", "Health"];

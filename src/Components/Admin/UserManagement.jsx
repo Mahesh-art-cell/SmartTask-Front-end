@@ -1,5 +1,4 @@
 
-
 import React, { useEffect, useState } from "react";
 import {
   activateUser,
@@ -9,13 +8,12 @@ import {
 } from "../../Services/api";
 import "./UserManagement.css";
 
-const UserManagement = () => {
+const UserManagement = ({ refreshStats }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedUserTasks, setSelectedUserTasks] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
 
-  // ✅ Fetch users from backend
   const fetchUsers = async () => {
     try {
       const data = await getAllUsers();
@@ -27,27 +25,26 @@ const UserManagement = () => {
     }
   };
 
-  // ✅ Activate user
   const handleActivate = async (id) => {
     try {
       await activateUser(id);
       fetchUsers();
+      refreshStats?.(); 
     } catch (err) {
       console.error("Failed to activate user", err);
     }
   };
 
-  // ✅ Deactivate user
   const handleDeactivate = async (id) => {
     try {
       await deactivateUser(id);
       fetchUsers();
+      refreshStats?.(); 
     } catch (err) {
       console.error("Failed to deactivate user", err);
     }
   };
 
-  // ✅ View tasks for a specific user
   const handleViewTasks = async (user) => {
     try {
       const tasks = await getUserTasks(user._id);
@@ -65,6 +62,7 @@ const UserManagement = () => {
     },
     { pending: 0, completed: 0 }
   );
+  console.log(selectedUserTasks)
 
   useEffect(() => {
     fetchUsers();
@@ -140,8 +138,7 @@ const UserManagement = () => {
                   {selectedUserTasks.map((task) => (
                     <div key={task._id} className={`task-card ${task.status}`}>
                       <h5>{task.title}</h5>
-                      <p>{task.description}</p>
-                      <p>Due: {new Date(task.dueDate).toLocaleDateString()}</p>
+                      {/* <p>Due: {new Date(task.dueDate).toLocaleDateString()}</p> */}
                       <p>
                         Status: <strong>{task.status}</strong>
                       </p>
@@ -162,5 +159,3 @@ const UserManagement = () => {
 };
 
 export default UserManagement;
-
-
