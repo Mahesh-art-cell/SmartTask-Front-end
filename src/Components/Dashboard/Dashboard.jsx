@@ -1,4 +1,3 @@
-//   user dashboard
 import React, { useState } from "react";
 import { useAuthContext } from "../../Context/AuthContext";
 import TaskForm from "../Tasks/TaskForm";
@@ -11,9 +10,14 @@ const Dashboard = () => {
   const { removeTask, completeTask } = useTaskContext();
 
   const [editingTask, setEditingTask] = useState(null); 
+  const [refreshFlag, setRefreshFlag] = useState(false); // 👈 state to trigger reload
 
   const handleEdit = (task) => {
     setEditingTask(task); 
+  };
+
+  const reloadTasks = () => {
+    setRefreshFlag((prev) => !prev); // 👈 toggle flag to notify TaskList
   };
 
   return (
@@ -23,14 +27,17 @@ const Dashboard = () => {
         <button className="logout-btn" onClick={logout}>Logout</button>
       </div>
 
-      
-      <TaskForm editingTask={editingTask} setEditingTask={setEditingTask} />
+      <TaskForm
+        editingTask={editingTask}
+        setEditingTask={setEditingTask}
+        reloadTasks={reloadTasks} // ✅ pass reloadTasks to TaskForm
+      />
 
-     
       <TaskList
         onEdit={handleEdit}
         onDelete={removeTask}
         onComplete={completeTask}
+        refreshTrigger={refreshFlag} // ✅ pass flag to trigger reload
       />
     </div>
   );

@@ -7,6 +7,11 @@ const TaskCard = ({ task, onEdit, onDelete, onComplete }) => {
       <h3>{task.title}</h3>
       <p>{task.description}</p>
       <p>Due: {new Date(task.dueDate).toLocaleDateString()}</p>
+      {task.category && (
+        <p className="task-category">
+          <strong>Category:</strong> {task.category}
+        </p>
+      )}
 
       <div className="task-actions">
         {task.status !== "completed" && (
